@@ -1,1 +1,11 @@
-.
+BEGIN:VCARD
+VERSION:3.0
+N:Schüler;Manuel;;;
+FN:Manuel Schüler
+ORG:Thales Deutschland GmbH
+TITLE:Senior Manager
+TEL;TYPE=CELL:+491731702935
+EMAIL:manuel.schueler@thalesgroup.com
+ADR;TYPE=WORK:;;Am Kiel-Kanal 3;Kiel;;24106;Germany
+URL:https://visitenkart-schueler-thales.netlify.app
+END:VCARD
