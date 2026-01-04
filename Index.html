@@ -46,11 +46,6 @@
   --shadow1:0 10px 24px rgba(0,0,0,0.12);
   --shadow2:0 6px 14px rgba(0,0,0,0.14);
   --shadow3:0 4px 10px rgba(0,0,0,0.08);
-
-  /* Corporate button colors */
-  --corpBlue:#1b5faa;
-  --corpBlueHover:#164f8c;
-  --corpBlueBorder:rgba(27,95,170,0.35);
 }
 
 body{
@@ -140,7 +135,7 @@ h2{text-align:center;margin:0 0 16px;font-weight:500;color:var(--muted);}
   border:1px solid var(--borderSoft);
 }
 
-/* Corporate Buttons */
+/* === NEUTRALE BUTTONS (wie zuvor) === */
 .primary,
 .secondary{
   display:flex;
@@ -149,24 +144,18 @@ h2{text-align:center;margin:0 0 16px;font-weight:500;color:var(--muted);}
   gap:8px;
   width:100%;
   box-sizing:border-box;
+  background:#ffffff;
   border-radius:14px;
   padding:12px;
   font-weight:700;
   font-size:15px;
   text-align:center;
   text-decoration:none;
-  cursor:pointer;
+  color:var(--text);
+  box-shadow:var(--shadow2);
+  border:1px solid var(--borderSoft);
   margin-bottom:10px;
-
-  background:var(--corpBlue);
-  color:#ffffff;
-  border:1px solid var(--corpBlueBorder);
-  box-shadow:0 10px 18px rgba(27,95,170,0.22);
-}
-
-@media (hover:hover){
-  .primary:hover,
-  .secondary:hover{background:var(--corpBlueHover);}
+  cursor:pointer;
 }
 
 .section{
@@ -226,17 +215,6 @@ h2{text-align:center;margin:0 0 16px;font-weight:500;color:var(--muted);}
 </head>
 
 <body>
-<!--
-  Fun fact:
-  This entire page works without:
-  - frameworks
-  - cookies
-  - trackers
-  - build steps
-
-  Just static files.
--->
-
 <div class="wrap">
 
   <div class="lang">
