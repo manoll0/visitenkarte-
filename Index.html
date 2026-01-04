@@ -40,7 +40,6 @@ body{
   text-align:right;
   font-size:13px;
   margin-bottom:10px;
-  user-select:none;
 }
 
 .lang a{
@@ -50,11 +49,10 @@ body{
   padding:6px 10px;
   border-radius:999px;
   margin-left:6px;
-  box-shadow:0 3px 10px rgba(0,0,0,0.08);
   border:1px solid var(--borderSoft);
 }
 
-.lang a.active{ font-weight:700; background:#fff; }
+.lang a.active{font-weight:700;}
 
 .card{
   position:relative;
@@ -84,20 +82,10 @@ body{
   border:5px solid #fff;
   display:block;
   margin:10px auto 6px;
-  box-shadow:0 10px 20px rgba(0,0,0,0.15);
 }
 
-h1{
-  text-align:center;
-  margin:14px 0 6px;
-}
-
-h2{
-  text-align:center;
-  margin:0 0 16px;
-  font-weight:500;
-  color:var(--muted);
-}
+h1{text-align:center;margin:14px 0 6px;}
+h2{text-align:center;margin:0 0 16px;font-weight:500;color:var(--muted);}
 
 .actions{
   display:flex;
@@ -122,37 +110,32 @@ h2{
   border:1px solid var(--borderSoft);
 }
 
-.primary{
-  display:block;
+/* === IDENTISCHE BUTTONS === */
+.primary,
+.secondary{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
   width:100%;
   box-sizing:border-box;
   background:#fff;
   border-radius:14px;
   padding:12px;
   font-weight:700;
+  font-size:15px;
   text-align:center;
   text-decoration:none;
   color:var(--text);
-  box-shadow:0 6px 14px rgba(0,0,0,0.12);
-  margin-bottom:10px;
+  box-shadow:var(--shadow2);
   border:1px solid var(--borderSoft);
+  margin-bottom:10px;
+  cursor:pointer;
 }
 
-.secondary{
-  display:block;
-  width:100%;
-  box-sizing:border-box;
-  background:#fff;
-  border-radius:14px;
-  padding:12px;
-  font-weight:700;
-  text-align:center;
-  text-decoration:none;
-  color:var(--text);
-  box-shadow:0 6px 14px rgba(0,0,0,0.10);
-  border:1px solid var(--borderSoft);
-  cursor:pointer;
-  margin-bottom:12px;
+.primary span,
+.secondary span{
+  font-size:15px;
 }
 
 .section{
@@ -193,29 +176,19 @@ h2{
   line-height:1.35;
 }
 
-/* ===== PRINT (Visitenkarte) ===== */
+/* PRINT */
 @media print{
-  body{ background:#fff !important; color:#000 !important; }
-  .wrap{ padding:0; max-width:none; }
-  .lang,.actions,.primary,.secondary{ display:none !important; }
+  body{background:#fff;color:#000;}
+  .lang,.actions,.primary,.secondary{display:none;}
+  .wrap{padding:0;}
   .card{
-    box-shadow:none !important;
-    backdrop-filter:none !important;
-    background:#fff !important;
-    border:1px solid #000 !important;
-    border-radius:12px !important;
     width:90mm;
     min-height:50mm;
     margin:0 auto;
-    padding:10mm 8mm;
+    border:1px solid #000;
+    backdrop-filter:none;
   }
-  .watermark{ display:none !important; }
-  .section{
-    box-shadow:none !important;
-    border:0 !important;
-    padding:0 !important;
-    margin-top:5mm !important;
-  }
+  .watermark{display:none;}
 }
 </style>
 </head>
@@ -223,7 +196,6 @@ h2{
 <body>
 <div class="wrap">
 
-  <!-- Sprache oben rechts -->
   <div class="lang">
     <a href="#" data-lang="de" id="lang-de">DE</a>
     <a href="#" data-lang="en" id="lang-en">EN</a>
@@ -240,29 +212,17 @@ h2{
     <div class="actions">
       <a class="iconbtn" href="tel:+491731702935">📞</a>
       <a class="iconbtn" href="mailto:manuel.schueler@thalesgroup.com">✉️</a>
-      <a class="iconbtn" href="https://maps.google.com/?q=Am+Kiel-Kanal+3,+24106+Kiel" target="_blank" rel="noopener">📍</a>
-      <a class="iconbtn" href="https://www.linkedin.com/in/schuelermanuel" target="_blank" rel="noopener">in</a>
+      <a class="iconbtn" href="https://maps.google.com/?q=Am+Kiel-Kanal+3,+24106+Kiel" target="_blank">📍</a>
+      <a class="iconbtn" href="https://www.linkedin.com/in/schuelermanuel" target="_blank">in</a>
     </div>
 
-    <!-- Kontakt speichern -->
     <a class="primary" href="manuel-schueler.vcf" download>
       📇 <span data-i18n="addToContacts">Add to Contacts</span>
     </a>
 
-    <!-- Druckbutton direkt darunter -->
-    <button class="primary" id="printBtn" type="button">
+    <button class="secondary" id="printBtn" type="button">
       🖨️ <span data-i18n="print">Drucken</span>
     </button>
-
-    <div class="section">
-      <span class="label" data-i18n="mobileLabel">Mobil</span>
-      <div>+49 173 1702935</div>
-    </div>
-
-    <div class="section">
-      <span class="label" data-i18n="emailLabel">E-Mail</span>
-      <div>manuel.schueler@thalesgroup.com</div>
-    </div>
 
     <div class="section">
       <span class="label" data-i18n="addressLabel">Standort</span>
@@ -280,106 +240,54 @@ h2{
       </div>
     </div>
 
-    <!-- DSGVO Bereich -->
     <div class="section">
       <span class="label" data-i18n="privacyLabel">Datenschutz</span>
-      <div class="small" id="privacyText">
-        Diese Seite nutzt keine Cookies, kein Tracking und keine externen Analyse-Skripte.
-        Beim Klick auf Telefon/E-Mail/LinkedIn/Maps gelten die Datenschutzregeln der jeweiligen Anbieter.
-      </div>
+      <div class="small" id="privacyText"></div>
     </div>
 
   </div>
 </div>
 
 <script>
-const TEXT = {
-  de:{
-    title:"Senior Manager",
-    titleInline:"Senior Manager",
-    addToContacts:"Kontakt speichern",
-    print:"Drucken",
-    mobileLabel:"Mobil",
-    emailLabel:"E-Mail",
-    addressLabel:"Standort",
-    companyLabel:"Unternehmen",
-    privacyLabel:"Datenschutz",
-    privacyText:"Diese Seite nutzt keine Cookies, kein Tracking und keine externen Analyse-Skripte. Beim Klick auf Telefon/E-Mail/LinkedIn/Maps gelten die Datenschutzregeln der jeweiligen Anbieter."
-  },
-  en:{
-    title:"Senior Manager",
-    titleInline:"Senior Manager",
-    addToContacts:"Add to Contacts",
-    print:"Print",
-    mobileLabel:"Mobile",
-    emailLabel:"Email",
-    addressLabel:"Address",
-    companyLabel:"Company",
-    privacyLabel:"Privacy",
-    privacyText:"This page uses no cookies, no tracking and no external analytics scripts. When you click phone/email/LinkedIn/Maps, the privacy policies of those providers apply."
-  },
-  fr:{
-    title:"Senior Manager",
-    titleInline:"Senior Manager",
-    addToContacts:"Ajouter aux contacts",
-    print:"Imprimer",
-    mobileLabel:"Mobile",
-    emailLabel:"E-mail",
-    addressLabel:"Adresse",
-    companyLabel:"Entreprise",
-    privacyLabel:"Confidentialité",
-    privacyText:"Cette page n’utilise pas de cookies, ni de suivi, ni de scripts d’analyse externes. En cliquant sur téléphone/e-mail/LinkedIn/Maps, les règles de confidentialité des fournisseurs concernés s’appliquent."
-  }
+const TEXT={
+  de:{title:"Senior Manager",titleInline:"Senior Manager",addToContacts:"Kontakt speichern",print:"Drucken",addressLabel:"Standort",companyLabel:"Unternehmen",privacyLabel:"Datenschutz",privacyText:"Diese Seite nutzt keine Cookies, kein Tracking und keine externen Analyse-Skripte."},
+  en:{title:"Senior Manager",titleInline:"Senior Manager",addToContacts:"Add to Contacts",print:"Print",addressLabel:"Address",companyLabel:"Company",privacyLabel:"Privacy",privacyText:"This page uses no cookies, no tracking and no external analytics scripts."},
+  fr:{title:"Senior Manager",titleInline:"Senior Manager",addToContacts:"Ajouter aux contacts",print:"Imprimer",addressLabel:"Adresse",companyLabel:"Entreprise",privacyLabel:"Confidentialité",privacyText:"Cette page n’utilise pas de cookies, ni de suivi, ni de scripts d’analyse externes."}
 };
 
-const LANGS = ["de","en","fr"];
-
 function address(lang){
-  if(lang==="fr") return "Am Kiel-Kanal 3<br>24106 Kiel<br>Allemagne";
-  if(lang==="en") return "Am Kiel-Kanal 3<br>24106 Kiel<br>Germany";
-  return "Am Kiel-Kanal 3<br>24106 Kiel<br>Deutschland";
+  if(lang==="fr")return"Am Kiel-Kanal 3<br>24106 Kiel<br>Allemagne";
+  if(lang==="en")return"Am Kiel-Kanal 3<br>24106 Kiel<br>Germany";
+  return"Am Kiel-Kanal 3<br>24106 Kiel<br>Deutschland";
 }
 
 function detectLang(){
-  const saved = localStorage.getItem("lang");
-  if(saved && LANGS.includes(saved)) return saved;
-
-  const langs = navigator.languages || [navigator.language || "de"];
-  const joined = langs.join(",").toLowerCase();
-
-  if(joined.includes("de")) return "de";
-  if(joined.includes("en")) return "en";
-  if(joined.includes("fr")) return "fr";
-  return "de";
+  const s=localStorage.getItem("lang");
+  if(s&&TEXT[s])return s;
+  const l=(navigator.languages||[navigator.language||"de"]).join(",").toLowerCase();
+  if(l.includes("de"))return"de";
+  if(l.includes("en"))return"en";
+  if(l.includes("fr"))return"fr";
+  return"de";
 }
 
 function setLang(lang){
-  const dict = TEXT[lang] || TEXT.de;
-
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
-    const key = el.dataset.i18n;
-    if(dict[key]) el.innerText = dict[key];
+  document.querySelectorAll("[data-i18n]").forEach(e=>{
+    e.innerText=TEXT[lang][e.dataset.i18n];
   });
-
-  document.getElementById("addressBlock").innerHTML = address(lang);
-  document.getElementById("privacyText").innerText = dict.privacyText;
-
-  localStorage.setItem("lang", lang);
-  document.documentElement.lang = lang;
-
-  LANGS.forEach(l=>{
-    document.getElementById("lang-"+l).classList.toggle("active", l===lang);
+  document.getElementById("addressBlock").innerHTML=address(lang);
+  document.getElementById("privacyText").innerText=TEXT[lang].privacyText;
+  localStorage.setItem("lang",lang);
+  ["de","en","fr"].forEach(l=>{
+    document.getElementById("lang-"+l).classList.toggle("active",l===lang);
   });
 }
 
 document.querySelectorAll("[data-lang]").forEach(a=>{
-  a.addEventListener("click", (e)=>{
-    e.preventDefault();
-    setLang(a.getAttribute("data-lang"));
-  });
+  a.onclick=e=>{e.preventDefault();setLang(a.dataset.lang);};
 });
 
-document.getElementById("printBtn").addEventListener("click", ()=>window.print());
+document.getElementById("printBtn").onclick=()=>window.print();
 
 setLang(detectLang());
 </script>
