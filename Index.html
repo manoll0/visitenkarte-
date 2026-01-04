@@ -9,11 +9,66 @@
 <meta name="theme-color" content="#6fa3e7">
 
 <style>
+/* =========================
+   Design Tokens
+   ========================= */
+:root{
+  --bg1:#6fa3e7;
+  --bg2:#ffffff;
+
+  --text:#1f2937;
+  --muted:rgba(31,41,55,0.70);
+  --label:rgba(31,41,55,0.55);
+
+  --cardBg:rgba(255,255,255,0.65);
+  --cardShadow:0 10px 24px rgba(0,0,0,0.12);
+
+  --panelBg:#ffffff;
+  --panelShadow:0 4px 10px rgba(0,0,0,0.08);
+
+  --chipBg:rgba(255,255,255,0.85);
+  --chipShadow:0 3px 10px rgba(0,0,0,0.08);
+
+  --btnBg:#ffffff;
+  --btnShadow:0 6px 14px rgba(0,0,0,0.14);
+
+  --borderSoft:rgba(0,0,0,0.06);
+}
+
+/* Auto Dark Mode */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg1:#0b1b35;
+    --bg2:#060b14;
+
+    --text:#e5e7eb;
+    --muted:rgba(229,231,235,0.75);
+    --label:rgba(229,231,235,0.62);
+
+    --cardBg:rgba(17,24,39,0.72);
+    --cardShadow:0 10px 28px rgba(0,0,0,0.55);
+
+    --panelBg:rgba(17,24,39,0.92);
+    --panelShadow:0 4px 14px rgba(0,0,0,0.45);
+
+    --chipBg:rgba(17,24,39,0.85);
+    --chipShadow:0 3px 12px rgba(0,0,0,0.45);
+
+    --btnBg:rgba(17,24,39,0.92);
+    --btnShadow:0 6px 18px rgba(0,0,0,0.55);
+
+    --borderSoft:rgba(255,255,255,0.10);
+  }
+}
+
+/* =========================
+   Layout
+   ========================= */
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  background:linear-gradient(180deg,#6fa3e7,#ffffff);
-  color:#1f2937;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text);
 }
 
 .wrap{
@@ -22,35 +77,39 @@ body{
   padding:20px 16px 36px;
 }
 
-.lang{
-  text-align:right;
-  font-size:13px;
+.topbar{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
   margin-bottom:10px;
+  flex-wrap:wrap;
 }
 
-.lang a{
+.chip{
   text-decoration:none;
-  color:#1f2937;
-  background:rgba(255,255,255,0.85);
+  color:var(--text);
+  background:var(--chipBg);
   padding:6px 10px;
   border-radius:999px;
-  margin-left:6px;
-  box-shadow:0 3px 10px rgba(0,0,0,0.08);
+  box-shadow:var(--chipShadow);
+  font-size:13px;
+  border:1px solid var(--borderSoft);
 }
 
-.lang a.active{
+.chip.active{
   font-weight:700;
-  background:#ffffff;
+  background:var(--panelBg);
 }
 
 .card{
   position:relative;
-  background:rgba(255,255,255,0.65);
+  background:var(--cardBg);
   backdrop-filter:blur(6px);
   border-radius:22px;
   padding:18px 16px 22px;
-  box-shadow:0 10px 24px rgba(0,0,0,0.12);
+  box-shadow:var(--cardShadow);
   overflow:hidden;
+  border:1px solid var(--borderSoft);
 }
 
 .watermark{
@@ -68,22 +127,25 @@ body{
   height:138px;
   border-radius:50%;
   object-fit:cover;
-  border:5px solid #fff;
+  border:5px solid var(--panelBg);
   display:block;
   margin:10px auto 6px;
   box-shadow:0 10px 20px rgba(0,0,0,0.15);
+  background:var(--panelBg);
 }
 
 h1{
   text-align:center;
   margin:14px 0 6px;
+  letter-spacing:0.2px;
 }
 
 h2{
   text-align:center;
   margin:0 0 16px;
   font-weight:500;
-  color:rgba(31,41,55,0.7);
+  color:var(--muted);
+  font-size:16px;
 }
 
 .actions{
@@ -97,41 +159,45 @@ h2{
 .iconbtn{
   width:56px;
   height:56px;
-  background:#fff;
+  background:var(--btnBg);
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:22px;
   text-decoration:none;
-  box-shadow:0 6px 14px rgba(0,0,0,0.14);
+  box-shadow:var(--btnShadow);
+  border:1px solid var(--borderSoft);
+  color:var(--text);
 }
 
 .primary{
   display:block;
-  background:#fff;
+  background:var(--btnBg);
   border-radius:14px;
   padding:12px;
   font-weight:700;
   text-align:center;
   text-decoration:none;
-  color:#0f172a;
+  color:var(--text);
   box-shadow:0 6px 14px rgba(0,0,0,0.12);
   margin-bottom:12px;
+  border:1px solid var(--borderSoft);
 }
 
 .section{
-  background:#fff;
+  background:var(--panelBg);
   border-radius:16px;
   padding:14px;
   margin-top:12px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  box-shadow:var(--panelShadow);
+  border:1px solid var(--borderSoft);
 }
 
 .label{
   display:block;
   font-size:12px;
-  color:rgba(31,41,55,0.55);
+  color:var(--label);
   margin-bottom:4px;
 }
 
@@ -145,10 +211,103 @@ h2{
   width:44px;
   height:44px;
   object-fit:contain;
-  background:#fff;
+  background:var(--panelBg);
   padding:6px;
   border-radius:10px;
-  border:1px solid rgba(0,0,0,0.06);
+  border:1px solid var(--borderSoft);
+}
+
+.small{
+  font-size:12.5px;
+  color:var(--muted);
+  line-height:1.35;
+}
+
+.link{
+  color:inherit;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+/* =========================
+   Print Styles (Druckversion)
+   ========================= */
+@media print{
+  body{
+    background:#ffffff !important;
+    color:#000 !important;
+  }
+  .wrap{
+    max-width:none;
+    padding:0;
+    margin:0;
+  }
+  .topbar{ display:none !important; }
+  .card{
+    box-shadow:none !important;
+    backdrop-filter:none !important;
+    background:#fff !important;
+    border:1px solid #000 !important;
+    border-radius:12px !important;
+    width:90mm;              /* Visitenkartenbreite */
+    min-height:50mm;         /* Visitenkartenhöhe */
+    margin:0 auto;
+    padding:10mm 8mm;
+    overflow:visible;
+  }
+  .watermark{ display:none !important; }
+  .actions{ display:none !important; }
+  .primary.printHide{ display:none !important; }
+  .section{
+    box-shadow:none !important;
+    border:0 !important;
+    padding:0 !important;
+    margin-top:6mm !important;
+    background:transparent !important;
+  }
+  .avatar{
+    width:28mm !important;
+    height:28mm !important;
+    border:1px solid #000 !important;
+    box-shadow:none !important;
+    margin:0 0 4mm 0 !important;
+  }
+  h1{
+    text-align:left !important;
+    margin:0 0 1mm 0 !important;
+    font-size:14pt !important;
+  }
+  h2{
+    text-align:left !important;
+    margin:0 0 4mm 0 !important;
+    font-size:10pt !important;
+    color:#000 !important;
+  }
+  .label{ color:#000 !important; font-size:9pt !important; }
+  .small{ color:#000 !important; }
+}
+
+/* Button row for utilities */
+.utils{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:12px;
+  background:var(--btnBg);
+  color:var(--text);
+  border:1px solid var(--borderSoft);
+  box-shadow:0 6px 14px rgba(0,0,0,0.10);
+  text-decoration:none;
+  font-weight:700;
+  width:100%;
+  box-sizing:border-box;
 }
 </style>
 </head>
@@ -156,31 +315,46 @@ h2{
 <body>
 <div class="wrap">
 
-  <div class="lang">
-    <a href="#" id="lang-de">DE</a>
-    <a href="#" id="lang-en">EN</a>
-    <a href="#" id="lang-fr">FR</a>
+  <!-- Language chips -->
+  <div class="topbar" aria-label="Language switcher">
+    <a href="#" class="chip" id="lang-de">DE</a>
+    <a href="#" class="chip" id="lang-en">EN</a>
+    <a href="#" class="chip" id="lang-fr">FR</a>
   </div>
 
   <div class="card">
-
-    <img src="IMG_4472.jpeg" alt="" class="watermark">
-
+    <img src="IMG_4472.jpeg" alt="" class="watermark" aria-hidden="true">
     <img src="IMG_4463.jpeg" alt="Manuel Schüler" class="avatar">
 
     <h1>Manuel Schüler</h1>
     <h2 data-i18n="title">Senior Manager</h2>
 
-    <div class="actions">
-      <a class="iconbtn" href="tel:+491731702935">📞</a>
-      <a class="iconbtn" href="mailto:manuel.schueler@thalesgroup.com">✉️</a>
-      <a class="iconbtn" href="https://maps.google.com/?q=Am+Kiel-Kanal+3,+24106+Kiel" target="_blank">📍</a>
-      <a class="iconbtn" href="https://www.linkedin.com/in/schuelermanuel" target="_blank">in</a>
+    <div class="actions" aria-label="Quick actions">
+      <a class="iconbtn" href="tel:+491731702935" aria-label="Call">📞</a>
+      <a class="iconbtn" href="mailto:manuel.schueler@thalesgroup.com" aria-label="Email">✉️</a>
+      <a class="iconbtn" href="https://maps.google.com/?q=Am+Kiel-Kanal+3,+24106+Kiel" target="_blank" rel="noopener" aria-label="Maps">📍</a>
+      <a class="iconbtn" href="https://www.linkedin.com/in/schuelermanuel" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
     </div>
 
-    <a class="primary" href="manuel-schueler.vcf" download>
+    <!-- Add to Contacts -->
+    <a class="primary printHide" href="manuel-schueler.vcf" download>
       📇 <span data-i18n="addToContacts">Add to Contacts</span>
     </a>
+
+    <!-- Print button (Druckversion) -->
+    <div class="utils printHide">
+      <a class="btn" href="#" id="printBtn">🖨️ <span data-i18n="print">Drucken</span></a>
+    </div>
+
+    <div class="section">
+      <span class="label" data-i18n="mobileLabel">Mobil</span>
+      <div>+49 173 1702935</div>
+    </div>
+
+    <div class="section">
+      <span class="label" data-i18n="emailLabel">E-Mail</span>
+      <div>manuel.schueler@thalesgroup.com</div>
+    </div>
 
     <div class="section">
       <span class="label" data-i18n="addressLabel">Standort</span>
@@ -198,31 +372,58 @@ h2{
       </div>
     </div>
 
+    <!-- DSGVO / Privacy -->
+    <div class="section">
+      <span class="label" data-i18n="privacyLabel">Datenschutz</span>
+      <div class="small" id="privacyText">
+        Diese Seite nutzt keine Cookies, kein Tracking und keine externen Analyse-Skripte.
+        Beim Klick auf Telefon/E-Mail/LinkedIn/Maps gelten die Datenschutzregeln der jeweiligen Anbieter.
+      </div>
+    </div>
+
   </div>
 </div>
 
 <script>
+/* =========================
+   i18n
+   ========================= */
 const TEXT = {
   de:{
     title:"Senior Manager",
     titleInline:"Senior Manager",
     addToContacts:"Kontakt speichern",
+    print:"Drucken",
+    mobileLabel:"Mobil",
+    emailLabel:"E-Mail",
     addressLabel:"Standort",
-    companyLabel:"Unternehmen"
+    companyLabel:"Unternehmen",
+    privacyLabel:"Datenschutz",
+    privacyText:"Diese Seite nutzt keine Cookies, kein Tracking und keine externen Analyse-Skripte. Beim Klick auf Telefon/E-Mail/LinkedIn/Maps gelten die Datenschutzregeln der jeweiligen Anbieter."
   },
   en:{
     title:"Senior Manager",
     titleInline:"Senior Manager",
     addToContacts:"Add to Contacts",
+    print:"Print",
+    mobileLabel:"Mobile",
+    emailLabel:"Email",
     addressLabel:"Address",
-    companyLabel:"Company"
+    companyLabel:"Company",
+    privacyLabel:"Privacy",
+    privacyText:"This page uses no cookies, no tracking and no external analytics scripts. When you click phone/email/LinkedIn/Maps, the privacy policies of those providers apply."
   },
   fr:{
     title:"Senior Manager",
     titleInline:"Senior Manager",
     addToContacts:"Ajouter aux contacts",
+    print:"Imprimer",
+    mobileLabel:"Mobile",
+    emailLabel:"E-mail",
     addressLabel:"Adresse",
-    companyLabel:"Entreprise"
+    companyLabel:"Entreprise",
+    privacyLabel:"Confidentialité",
+    privacyText:"Cette page n’utilise pas de cookies, ni de suivi, ni de scripts d’analyse externes. En cliquant sur téléphone/e-mail/LinkedIn/Maps, les règles de confidentialité des fournisseurs concernés s’appliquent."
   }
 };
 
@@ -232,9 +433,11 @@ function address(lang){
   return "Am Kiel-Kanal 3<br>24106 Kiel<br>Deutschland";
 }
 
+const LANGS = ["de","en","fr"];
+
 function detectLang(){
   const saved = localStorage.getItem("lang");
-  if(saved && ["de","en","fr"].includes(saved)) return saved;
+  if(saved && LANGS.includes(saved)) return saved;
 
   const langs = navigator.languages || [navigator.language || "de"];
   const joined = langs.join(",").toLowerCase();
@@ -245,23 +448,42 @@ function detectLang(){
   return "de";
 }
 
-function setLang(lang){
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
-    el.innerText = TEXT[lang][el.dataset.i18n];
-  });
-  document.getElementById("addressBlock").innerHTML = address(lang);
-  localStorage.setItem("lang",lang);
-  document.documentElement.lang = lang;
-
-  ["de","en","fr"].forEach(l=>{
-    document.getElementById("lang-"+l).classList.toggle("active",l===lang);
+function setActiveChip(lang){
+  LANGS.forEach(l=>{
+    const el = document.getElementById("lang-"+l);
+    if(!el) return;
+    el.classList.toggle("active", l===lang);
+    el.setAttribute("aria-current", l===lang ? "true" : "false");
   });
 }
 
-document.getElementById("lang-de").onclick=()=>{setLang("de");return false;};
-document.getElementById("lang-en").onclick=()=>{setLang("en");return false;};
-document.getElementById("lang-fr").onclick=()=>{setLang("fr");return false;};
+function setLang(lang){
+  const dict = TEXT[lang] || TEXT.de;
 
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.dataset.i18n;
+    if(dict[key]) el.innerText = dict[key];
+  });
+
+  document.getElementById("addressBlock").innerHTML = address(lang);
+
+  // privacy text
+  document.getElementById("privacyText").innerText = dict.privacyText;
+
+  localStorage.setItem("lang", lang);
+  document.documentElement.lang = lang;
+  setActiveChip(lang);
+}
+
+/* Language switch */
+document.getElementById("lang-de").onclick = (e)=>{ e.preventDefault(); setLang("de"); };
+document.getElementById("lang-en").onclick = (e)=>{ e.preventDefault(); setLang("en"); };
+document.getElementById("lang-fr").onclick = (e)=>{ e.preventDefault(); setLang("fr"); };
+
+/* Print */
+document.getElementById("printBtn").onclick = (e)=>{ e.preventDefault(); window.print(); };
+
+/* Init */
 setLang(detectLang());
 </script>
 
