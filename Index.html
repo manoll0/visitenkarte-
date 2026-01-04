@@ -9,35 +9,17 @@
 <meta name="theme-color" content="#6fa3e7">
 
 <style>
-/* =========================
-   Basis Design (Light only)
-   ========================= */
 :root{
   --bg1:#6fa3e7;
   --bg2:#ffffff;
-
   --text:#1f2937;
-  --muted:rgba(31,41,55,0.70);
+  --muted:rgba(31,41,55,0.7);
   --label:rgba(31,41,55,0.55);
-
   --cardBg:rgba(255,255,255,0.65);
-  --cardShadow:0 10px 24px rgba(0,0,0,0.12);
-
   --panelBg:#ffffff;
-  --panelShadow:0 4px 10px rgba(0,0,0,0.08);
-
-  --chipBg:rgba(255,255,255,0.85);
-  --chipShadow:0 3px 10px rgba(0,0,0,0.08);
-
-  --btnBg:#ffffff;
-  --btnShadow:0 6px 14px rgba(0,0,0,0.14);
-
   --borderSoft:rgba(0,0,0,0.06);
 }
 
-/* =========================
-   Layout
-   ========================= */
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
@@ -53,26 +35,32 @@ body{
 
 .topbar{
   display:flex;
-  justify-content:flex-end;
-  gap:8px;
+  justify-content:space-between;
+  align-items:center;
   margin-bottom:10px;
-  flex-wrap:wrap;
 }
 
-.chip{
+.lang a{
   text-decoration:none;
   color:var(--text);
-  background:var(--chipBg);
+  background:rgba(255,255,255,0.85);
   padding:6px 10px;
   border-radius:999px;
-  box-shadow:var(--chipShadow);
+  margin-left:6px;
   font-size:13px;
   border:1px solid var(--borderSoft);
 }
 
-.chip.active{
-  font-weight:700;
+.lang a.active{font-weight:700;}
+
+.printBtn{
+  text-decoration:none;
+  font-size:13px;
+  padding:6px 10px;
+  border-radius:999px;
   background:#ffffff;
+  border:1px solid var(--borderSoft);
+  cursor:pointer;
 }
 
 .card{
@@ -81,8 +69,6 @@ body{
   backdrop-filter:blur(6px);
   border-radius:22px;
   padding:18px 16px 22px;
-  box-shadow:var(--cardShadow);
-  overflow:hidden;
   border:1px solid var(--borderSoft);
 }
 
@@ -100,58 +86,43 @@ body{
   height:138px;
   border-radius:50%;
   object-fit:cover;
-  border:5px solid var(--panelBg);
+  border:5px solid #fff;
   display:block;
   margin:10px auto 6px;
-  box-shadow:0 10px 20px rgba(0,0,0,0.15);
 }
 
-h1{
-  text-align:center;
-  margin:14px 0 6px;
-}
-
-h2{
-  text-align:center;
-  margin:0 0 16px;
-  font-weight:500;
-  color:var(--muted);
-  font-size:16px;
-}
+h1{text-align:center;margin:14px 0 6px;}
+h2{text-align:center;margin:0 0 16px;font-weight:500;color:var(--muted);}
 
 .actions{
   display:flex;
   justify-content:center;
   gap:14px;
   margin-bottom:14px;
-  flex-wrap:wrap;
 }
 
 .iconbtn{
   width:56px;
   height:56px;
-  background:var(--btnBg);
+  background:#fff;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:22px;
   text-decoration:none;
-  box-shadow:var(--btnShadow);
   border:1px solid var(--borderSoft);
-  color:var(--text);
 }
 
 .primary{
   display:block;
-  background:var(--btnBg);
+  background:#fff;
   border-radius:14px;
   padding:12px;
   font-weight:700;
   text-align:center;
   text-decoration:none;
   color:var(--text);
-  box-shadow:0 6px 14px rgba(0,0,0,0.12);
   margin-bottom:12px;
   border:1px solid var(--borderSoft);
 }
@@ -161,7 +132,6 @@ h2{
   border-radius:16px;
   padding:14px;
   margin-top:12px;
-  box-shadow:var(--panelShadow);
   border:1px solid var(--borderSoft);
 }
 
@@ -182,46 +152,25 @@ h2{
   width:44px;
   height:44px;
   object-fit:contain;
-  background:var(--panelBg);
+  background:#fff;
   padding:6px;
   border-radius:10px;
   border:1px solid var(--borderSoft);
 }
 
-.small{
-  font-size:12.5px;
-  color:var(--muted);
-  line-height:1.35;
-}
-
-/* =========================
-   Print (Visitenkarte)
-   ========================= */
+/* ===== PRINT ===== */
 @media print{
-  body{
-    background:#ffffff !important;
-    color:#000 !important;
-  }
-  .wrap{
-    max-width:none;
-    padding:0;
-    margin:0;
-  }
-  .topbar,.actions,.primary,.printHide{
-    display:none !important;
-  }
+  body{background:#fff;color:#000;}
+  .topbar,.actions,.primary{display:none;}
+  .wrap{padding:0;}
   .card{
-    box-shadow:none !important;
-    backdrop-filter:none !important;
-    background:#fff !important;
-    border:1px solid #000 !important;
-    border-radius:12px !important;
     width:90mm;
     min-height:50mm;
     margin:0 auto;
-    padding:10mm 8mm;
+    border:1px solid #000;
+    backdrop-filter:none;
   }
-  .watermark{display:none!important;}
+  .watermark{display:none;}
 }
 </style>
 </head>
@@ -230,9 +179,12 @@ h2{
 <div class="wrap">
 
   <div class="topbar">
-    <a href="#" class="chip" id="lang-de">DE</a>
-    <a href="#" class="chip" id="lang-en">EN</a>
-    <a href="#" class="chip" id="lang-fr">FR</a>
+    <div class="lang">
+      <a href="#" id="lang-de">DE</a>
+      <a href="#" id="lang-en">EN</a>
+      <a href="#" id="lang-fr">FR</a>
+    </div>
+    <button class="printBtn" onclick="window.print()">🖨️ Drucken</button>
   </div>
 
   <div class="card">
@@ -269,14 +221,6 @@ h2{
       </div>
     </div>
 
-    <div class="section">
-      <span class="label">Datenschutz</span>
-      <div class="small">
-        Diese Seite nutzt keine Cookies, kein Tracking und keine externen Skripte.
-        Beim Klick auf Telefon, E-Mail, LinkedIn oder Maps gelten die Datenschutzregeln der jeweiligen Anbieter.
-      </div>
-    </div>
-
   </div>
 </div>
 
@@ -288,9 +232,9 @@ const TEXT={
 };
 
 function address(lang){
-  if(lang==="fr") return "Am Kiel-Kanal 3<br>24106 Kiel<br>Allemagne";
-  if(lang==="en") return "Am Kiel-Kanal 3<br>24106 Kiel<br>Germany";
-  return "Am Kiel-Kanal 3<br>24106 Kiel<br>Deutschland";
+  if(lang==="fr")return"Am Kiel-Kanal 3<br>24106 Kiel<br>Allemagne";
+  if(lang==="en")return"Am Kiel-Kanal 3<br>24106 Kiel<br>Germany";
+  return"Am Kiel-Kanal 3<br>24106 Kiel<br>Deutschland";
 }
 
 function detectLang(){
