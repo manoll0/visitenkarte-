@@ -1,133 +1,355 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manuel Schüler – Digitale Visitenkarte</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manuel Schüler – Digitale Visitenkarte</title>
 
-<style>
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
-  background: linear-gradient(180deg, #6fa3e7, #ffffff);
-  text-align: center;
-  color: #333;
-}
+  <meta name="description" content="Digitale Visitenkarte von Manuel Schüler (Thales Deutschland GmbH) – Kontakt, Adresse, LinkedIn." />
+  <meta name="theme-color" content="#6fa3e7" />
 
-.card {
-  max-width: 420px;
-  margin: auto;
-  padding: 30px 20px;
-}
+  <style>
+    :root { --cardMax: 440px; }
 
-.avatar {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 5px solid #fff;
-  margin-top: 20px;
-}
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #6fa3e7, #ffffff);
+      text-align: center;
+      color: #1f2937;
+    }
 
-h1 {
-  margin: 15px 0 5px;
-}
+    .wrap {
+      max-width: var(--cardMax);
+      margin: 0 auto;
+      padding: 22px 16px 34px;
+    }
 
-h2 {
-  font-weight: normal;
-  color: #555;
-  margin: 0 0 25px;
-}
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      font-size: 13px;
+      margin-bottom: 10px;
+      user-select: none;
+    }
 
-.actions {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 30px;
-}
+    .lang a {
+      color: rgba(31,41,55,0.9);
+      text-decoration: none;
+      background: rgba(255,255,255,0.7);
+      padding: 6px 10px;
+      border-radius: 999px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
 
-.actions a {
-  background: #fff;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 22px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
+    .lang a.active {
+      font-weight: 700;
+      background: #ffffff;
+    }
 
-.section {
-  background: #fff;
-  border-radius: 16px;
-  padding: 15px;
-  margin-bottom: 15px;
-  text-align: left;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
+    .card {
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 22px;
+      padding: 18px 16px 22px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.10);
+      backdrop-filter: blur(6px);
+    }
 
-.section strong {
-  display: block;
-  color: #777;
-  font-size: 13px;
-}
+    .avatar {
+      width: 138px;
+      height: 138px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #fff;
+      margin-top: 6px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      background: #fff;
+    }
 
-.linkedin {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: #0077b5;
-  font-weight: 600;
-}
-</style>
+    h1 {
+      margin: 14px 0 6px;
+      font-size: 26px;
+      letter-spacing: 0.2px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-weight: 500;
+      color: rgba(31,41,55,0.75);
+      font-size: 16px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin: 14px 0 16px;
+      flex-wrap: wrap;
+    }
+
+    .iconbtn {
+      background: #fff;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 22px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.14);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 12px 14px;
+      text-decoration: none;
+      color: #0f172a;
+      font-weight: 700;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.10);
+      border: 1px solid rgba(0,0,0,0.05);
+      width: 100%;
+      box-sizing: border-box;
+      margin: 6px 0 10px;
+    }
+
+    .primary small {
+      font-weight: 600;
+      color: rgba(15,23,42,0.65);
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px 14px;
+      margin-top: 12px;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .label {
+      display: block;
+      color: rgba(31,41,55,0.55);
+      font-size: 12.5px;
+      margin-bottom: 4px;
+      letter-spacing: 0.2px;
+      text-transform: none;
+    }
+
+    .value {
+      font-size: 15px;
+      line-height: 1.35;
+      color: #111827;
+      word-break: break-word;
+    }
+
+    .muted-link {
+      color: #0b5cab;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .footerhint {
+      margin-top: 12px;
+      font-size: 12.5px;
+      color: rgba(31,41,55,0.65);
+    }
+  </style>
 </head>
 
 <body>
-<div class="card">
+  <div class="wrap">
+    <div class="topbar lang" aria-label="Language switcher">
+      <a href="#" data-lang="de" id="lang-de">DE</a>
+      <a href="#" data-lang="en" id="lang-en">EN</a>
+      <a href="#" data-lang="fr" id="lang-fr">FR</a>
+    </div>
 
-<img src="IMG_4463.jpeg" alt="Manuel Schüler" class="avatar">
+    <div class="card">
+      <img src="IMG_4463.jpeg" alt="Manuel Schüler" class="avatar" />
 
-<h1>Manuel Schüler</h1>
-<h2>Senior Manager</h2>
+      <h1>Manuel Schüler</h1>
+      <h2 data-i18n="title">Senior Manager</h2>
 
-<div class="actions">
-  <a href="tel:+491731702935">📞</a>
-  <a href="mailto:manuel.schueler@thalesgroup.com">✉️</a>
-  <a href="https://maps.google.com/?q=Am+Kiel-Kanal+3,+24106+Kiel">📍</a>
-</div>
+      <div class="actions" aria-label="Quick actions">
+        <a class="iconbtn" href="tel:+491731702935" aria-label="Call">📞</a>
+        <a class="iconbtn" href="mailto:manuel.schueler@thalesgroup.com" aria-label="Email">✉️</a>
+        <a class="iconbtn" href="https://maps.google.com/?q=Am+Kiel-Kanal+3,+24106+Kiel" target="_blank" rel="noopener" aria-label="Maps">📍</a>
+        <a class="iconbtn" href="https://www.linkedin.com/in/schuelermanuel" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      </div>
 
-<div class="section">
-  <strong>Mobil</strong>
-  +49 173 1702935
-</div>
+      <!-- Add to Contacts / vCard -->
+      <a class="primary" href="manuel-schueler.vcf" download>
+        📇 <span data-i18n="addToContacts">Add to Contacts</span>
+        <small>(vCard)</small>
+      </a>
 
-<div class="section">
-  <strong>E-Mail</strong>
-  manuel.schueler@thalesgroup.com
-</div>
+      <div class="section">
+        <span class="label" data-i18n="mobileLabel">Mobil</span>
+        <div class="value">+49 173 1702935</div>
+      </div>
 
-<div class="section">
-  <strong>Standort</strong>
-  Am Kiel-Kanal 3<br>
-  24106 Kiel<br>
-  Deutschland
-</div>
+      <div class="section">
+        <span class="label" data-i18n="emailLabel">E-Mail</span>
+        <div class="value">manuel.schueler@thalesgroup.com</div>
+      </div>
 
-<div class="section">
-  <strong>Unternehmen</strong>
-  Thales Deutschland GmbH<br>
-  Senior Manager
-</div>
+      <div class="section">
+        <span class="label" data-i18n="addressLabel">Standort</span>
+        <div class="value" id="addressBlock">
+          Am Kiel-Kanal 3<br>
+          24106 Kiel<br>
+          Deutschland
+        </div>
+      </div>
 
-<div class="section">
-  <strong>Finden Sie mich auf</strong>
-  <a class="linkedin" href="https://www.linkedin.com/in/schuelermanuel" target="_blank">
-    🔗 LinkedIn
-  </a>
-</div>
+      <div class="section">
+        <span class="label" data-i18n="companyLabel">Unternehmen</span>
+        <div class="value">
+          Thales Deutschland GmbH<br>
+          <span data-i18n="titleInline">Senior Manager</span>
+        </div>
+      </div>
 
-</div>
+      <div class="section">
+        <span class="label" data-i18n="findMeLabel">Finden Sie mich auf</span>
+        <div class="value">
+          <a class="muted-link" href="https://www.linkedin.com/in/schuelermanuel" target="_blank" rel="noopener">
+            🔗 LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="footerhint" data-i18n="hint">
+        Tipp: „Add to Contacts“ speichert meinen Kontakt direkt in deinem Adressbuch.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- i18n strings ---
+    const I18N = {
+      de: {
+        title: "Senior Manager",
+        titleInline: "Senior Manager",
+        addToContacts: "Kontakt speichern",
+        mobileLabel: "Mobil",
+        emailLabel: "E-Mail",
+        addressLabel: "Standort",
+        companyLabel: "Unternehmen",
+        findMeLabel: "Finden Sie mich auf",
+        hint: "Tipp: „Kontakt speichern“ speichert meinen Kontakt direkt in deinem Adressbuch."
+      },
+      en: {
+        title: "Senior Manager",
+        titleInline: "Senior Manager",
+        addToContacts: "Add to Contacts",
+        mobileLabel: "Mobile",
+        emailLabel: "Email",
+        addressLabel: "Address",
+        companyLabel: "Company",
+        findMeLabel: "Find me on",
+        hint: "Tip: “Add to Contacts” saves my contact directly to your address book."
+      },
+      fr: {
+        title: "Senior Manager",
+        titleInline: "Senior Manager",
+        addToContacts: "Ajouter aux contacts",
+        mobileLabel: "Mobile",
+        emailLabel: "E-mail",
+        addressLabel: "Adresse",
+        companyLabel: "Entreprise",
+        findMeLabel: "Retrouvez-moi sur",
+        hint: "Astuce : “Ajouter aux contacts” enregistre mon contact dans votre carnet d’adresses."
+      }
+    };
+
+    // --- Address formatting per language ---
+    function addressHTML(lang) {
+      // German: street, postal code + city, country
+      if (lang === "de") {
+        return "Am Kiel-Kanal 3<br>24106 Kiel<br>Deutschland";
+      }
+      // English: street, postal code + city, Germany
+      if (lang === "en") {
+        return "Am Kiel-Kanal 3<br>24106 Kiel<br>Germany";
+      }
+      // French: street, postal code + city, Allemagne
+      return "Am Kiel-Kanal 3<br>24106 Kiel<br>Allemagne";
+    }
+
+    // --- Language selection logic ---
+    const LANGS = ["de", "en", "fr"];
+
+    function normalizeBrowserLang() {
+      const raw = (navigator.language || navigator.userLanguage || "de").toLowerCase();
+      if (raw.startsWith("fr")) return "fr";
+      if (raw.startsWith("en")) return "en";
+      if (raw.startsWith("de")) return "de";
+      // fallback: if user has a German site context, default to DE
+      return "de";
+    }
+
+    function setActiveLangButton(lang) {
+      LANGS.forEach(l => {
+        const el = document.getElementById(`lang-${l}`);
+        if (!el) return;
+        el.classList.toggle("active", l === lang);
+        el.setAttribute("aria-current", l === lang ? "true" : "false");
+      });
+    }
+
+    function applyLang(lang) {
+      const dict = I18N[lang] || I18N.de;
+
+      document.querySelectorAll("[data-i18n]").forEach(node => {
+        const key = node.getAttribute("data-i18n");
+        if (dict[key]) node.textContent = dict[key];
+      });
+
+      document.getElementById("addressBlock").innerHTML = addressHTML(lang);
+      setActiveLangButton(lang);
+
+      // Keep <html lang="..."> accurate
+      document.documentElement.setAttribute("lang", lang);
+    }
+
+    function getInitialLang() {
+      // 1) explicit user choice stored
+      const saved = localStorage.getItem("lang");
+      if (saved && LANGS.includes(saved)) return saved;
+
+      // 2) URL override e.g. ?lang=en (optional convenience)
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get("lang");
+      if (q && LANGS.includes(q)) return q;
+
+      // 3) browser language
+      return normalizeBrowserLang();
+    }
+
+    // Wire language switch buttons
+    document.querySelectorAll("[data-lang]").forEach(a => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const lang = a.getAttribute("data-lang");
+        if (!LANGS.includes(lang)) return;
+        localStorage.setItem("lang", lang);
+        applyLang(lang);
+      });
+    });
+
+    // Apply initial language
+    applyLang(getInitialLang());
+  </script>
 </body>
 </html>
