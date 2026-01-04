@@ -8,8 +8,8 @@
 =====================================================================
  👋 Hello, curious human.
 
- This page was hand-crafted by Manuel Schüler
- with assistance from AI tools.
+ This page was hand-crafted by its owner
+ with assistance from ChatGPT.
 
  No frameworks.
  No cookies.
@@ -18,13 +18,14 @@
  Just static HTML, CSS & JS.
 
  If you're reading this:
+ You are probably a developer.
  Have a great day. ☕
 =====================================================================
 -->
 
-<meta name="generator" content="Hand-built">
+<meta name="generator" content="Hand-built by the owner with ChatGPT">
 <meta name="author" content="Manuel Schüler">
-<meta name="x-nerd-note" content="Yes, this page was created with AI-Tools. No, the AI it does not spy on you.">
+<meta name="x-nerd-note" content="Yes, this page was created with ChatGPT. No, it does not spy on you.">
 <meta name="x-build-info" content="Static HTML • Zero Cookies • Zero Tracking • 100% Human Intent">
 
 <title>Manuel Schüler – Digitale Visitenkarte</title>
@@ -134,7 +135,7 @@ h2{text-align:center;margin:0 0 16px;font-weight:500;color:var(--muted);}
   border:1px solid var(--borderSoft);
 }
 
-/* === BUTTONS === */
+/* Buttons */
 .primary,
 .secondary{
   display:flex;
@@ -195,7 +196,7 @@ h2{text-align:center;margin:0 0 16px;font-weight:500;color:var(--muted);}
   line-height:1.35;
 }
 
-/* === Print === */
+/* ================= PRINT ================= */
 @media print{
   body{background:#fff;color:#000;}
   .lang,.actions,.primary,.secondary{display:none;}
@@ -207,6 +208,7 @@ h2{text-align:center;margin:0 0 16px;font-weight:500;color:var(--muted);}
     border:1px solid #000;
     backdrop-filter:none;
     box-shadow:none;
+    padding:10mm 8mm;
   }
   .watermark{display:none;}
 }
@@ -244,6 +246,18 @@ h2{text-align:center;margin:0 0 16px;font-weight:500;color:var(--muted);}
       🖨️ <span data-i18n="print">Drucken</span>
     </button>
 
+    <!-- NEW: Telefon als eigener Bereich -->
+    <div class="section">
+      <span class="label" data-i18n="phoneLabel">Telefon</span>
+      <div>+49 173 1702935</div>
+    </div>
+
+    <!-- NEW: E-Mail als eigener Bereich (oberhalb Standort) -->
+    <div class="section">
+      <span class="label" data-i18n="emailLabel">E-Mail</span>
+      <div>manuel.schueler@thalesgroup.com</div>
+    </div>
+
     <div class="section">
       <span class="label" data-i18n="addressLabel">Standort</span>
       <div id="addressBlock"></div>
@@ -270,9 +284,42 @@ h2{text-align:center;margin:0 0 16px;font-weight:500;color:var(--muted);}
 
 <script>
 const TEXT={
-  de:{title:"Senior Manager",titleInline:"Senior Manager",addToContacts:"Kontakt speichern",print:"Drucken",addressLabel:"Standort",companyLabel:"Unternehmen",privacyLabel:"Datenschutz",privacyText:"Diese Seite nutzt keine Cookies, kein Tracking und keine externen Analyse-Skripte. Beim Klick auf Telefon/E-Mail/LinkedIn/Maps gelten die Datenschutzregeln der jeweiligen Anbieter."},
-  en:{title:"Senior Manager",titleInline:"Senior Manager",addToContacts:"Add to Contacts",print:"Print",addressLabel:"Address",companyLabel:"Company",privacyLabel:"Privacy",privacyText:"This page uses no cookies, no tracking and no external analytics scripts. When you click phone/email/LinkedIn/Maps, the privacy policies of those providers apply."},
-  fr:{title:"Senior Manager",titleInline:"Senior Manager",addToContacts:"Ajouter aux contacts",print:"Imprimer",addressLabel:"Adresse",companyLabel:"Entreprise",privacyLabel:"Confidentialité",privacyText:"Cette page n’utilise pas de cookies, ni de suivi, ni de scripts d’analyse externes. En cliquant sur téléphone/e-mail/LinkedIn/Maps, les règles de confidentialité des fournisseurs concernés s’appliquent."}
+  de:{
+    title:"Senior Manager",
+    titleInline:"Senior Manager",
+    addToContacts:"Kontakt speichern",
+    print:"Drucken",
+    phoneLabel:"Telefon",
+    emailLabel:"E-Mail",
+    addressLabel:"Standort",
+    companyLabel:"Unternehmen",
+    privacyLabel:"Datenschutz",
+    privacyText:"Diese Seite nutzt keine Cookies, kein Tracking und keine externen Analyse-Skripte. Beim Klick auf Telefon/E-Mail/LinkedIn/Maps gelten die Datenschutzregeln der jeweiligen Anbieter."
+  },
+  en:{
+    title:"Senior Manager",
+    titleInline:"Senior Manager",
+    addToContacts:"Add to Contacts",
+    print:"Print",
+    phoneLabel:"Phone",
+    emailLabel:"Email",
+    addressLabel:"Address",
+    companyLabel:"Company",
+    privacyLabel:"Privacy",
+    privacyText:"This page uses no cookies, no tracking and no external analytics scripts. When you click phone/email/LinkedIn/Maps, the privacy policies of those providers apply."
+  },
+  fr:{
+    title:"Senior Manager",
+    titleInline:"Senior Manager",
+    addToContacts:"Ajouter aux contacts",
+    print:"Imprimer",
+    phoneLabel:"Téléphone",
+    emailLabel:"E-mail",
+    addressLabel:"Adresse",
+    companyLabel:"Entreprise",
+    privacyLabel:"Confidentialité",
+    privacyText:"Cette page n’utilise pas de cookies, ni de suivi, ni de scripts d’analyse externes. En cliquant sur téléphone/e-mail/LinkedIn/Maps, les règles de confidentialité des fournisseurs concernés s’appliquent."
+  }
 };
 
 function address(lang){
